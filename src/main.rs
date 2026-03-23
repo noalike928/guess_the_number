@@ -14,7 +14,13 @@ fn main() {
             .read_line(&mut user_input)
             .expect("unable to read from stdin");
 
-        let user_input: i32 = user_input.trim().parse().expect("invalid input");
+        let user_input: i32 = match user_input.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("please enter a valid number");
+                continue;
+            },
+        };
 
         match user_input.cmp(&secret_number) {
             std::cmp::Ordering::Greater => {
