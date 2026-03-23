@@ -1,6 +1,6 @@
 use rand::Rng;
-//use std::cmp::Ordering;
 use std::io;
+use colored::*;
 
 fn main() {
     banner();
@@ -17,23 +17,23 @@ fn main() {
         let user_input: i32 = match user_input.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("please enter a valid number");
+                println!("{}","invalid input".red());
                 continue;
             },
         };
 
         match user_input.cmp(&secret_number) {
             std::cmp::Ordering::Greater => {
-                println!("too high");
+                println!("{}","too high".red());
                 continue;
             }
             std::cmp::Ordering::Equal => {
-                println!("you win!");
+                println!("{}","you win!".green());
                 break;
             }
 
             std::cmp::Ordering::Less => {
-                println!("too low");
+                println!("{}","too low".red());
                 continue;
             }
         }
