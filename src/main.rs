@@ -16,7 +16,7 @@ fn main() {
 
         let user_input: i32 = match user_input.trim().parse() {
             Ok(num) => num,
-            Err(_) => {
+            _ => {
                 println!("{}","invalid input".red());
                 continue;
             },
